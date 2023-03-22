@@ -11,6 +11,7 @@ class EmphasisSyntax extends DelimiterSyntax {
       : super(
           '_+',
           requiresDelimiterRun: true,
+          allowIntraWord: true,
           tags: _tags,
           startCharacter: $underscore,
         );

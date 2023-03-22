@@ -22,10 +22,11 @@ final blockquotePattern = RegExp(r'^[ ]{0,3}>[ \t]?.*$');
 final indentPattern = RegExp(r'^(?:    | {0,3}\t)(.*)$');
 
 /// Fenced code block.
-final codeFencePattern = RegExp(
-  r'^([ ]{0,3})(?:(?<backtick>`{3,})(?<backtickInfo>[^`]*)|(?<tilde>~{3,})(?<tildeInfo>.*))$',
-);
-
+final codeFencePattern = RegExp(r'^([ ]{0,3})`{3,}(?<language>\w*)$');
+// final codeFencePattern = RegExp(
+//   r'^([ ]{0,3})(?:(?<backtick>`{3,})(?<backtickInfo>[^`]*)|(?<tilde>~{3,})(?<tildeInfo>.*))$',
+// );
+ 
 /// Fenced blockquotes.
 final blockquoteFencePattern = RegExp(r'^>{3}\s*$');
 

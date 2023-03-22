@@ -19,21 +19,23 @@ import 'inline_syntaxes/line_break_syntax.dart';
 import 'inline_syntaxes/link_syntax.dart';
 import 'inline_syntaxes/soft_line_break_syntax.dart';
 import 'inline_syntaxes/text_syntax.dart';
-
+import 'custom_syntax/inline_center_syntax.dart';
+import 'custom_syntax/inline_spoiler_syntax.dart';
 /// Maintains the internal state needed to parse inline span elements in
 /// Markdown.
 class InlineParser {
   static final List<InlineSyntax> _defaultSyntaxes =
       List<InlineSyntax>.unmodifiable(<InlineSyntax>[
+        InlineSpoilerSyntax(),
     EmailAutolinkSyntax(),
     AutolinkSyntax(),
     LineBreakSyntax(),
-    // Parse "**strong**" and "*emphasis*" tags.
     EmphasisSyntax.asterisk(),
-    // Parse "__strong__" and "_emphasis_" tags.
     EmphasisSyntax.underscore(),
     CodeSyntax(),
     SoftLineBreakSyntax(),
+    // ImageWithSizeSyntax(),
+    InlineCenterSyntax(),
     // We will add the LinkSyntax once we know about the specific link resolver.
   ]);
 
