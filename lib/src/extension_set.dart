@@ -12,6 +12,36 @@ import 'inline_syntaxes/inline_html_syntax.dart';
 import 'inline_syntaxes/inline_syntax.dart';
 import 'inline_syntaxes/strikethrough_syntax.dart';
 
+// alset
+import 'block_syntaxes/blockquote_syntax.dart';
+import 'block_syntaxes/code_block_syntax.dart';
+import 'block_syntaxes/empty_block_syntax.dart';
+import 'block_syntaxes/header_syntax.dart';
+import 'block_syntaxes/horizontal_rule_syntax.dart';
+import 'block_syntaxes/html_block_syntax.dart';
+import 'block_syntaxes/link_reference_definition_syntax.dart';
+import 'block_syntaxes/ordered_list_syntax.dart';
+import 'block_syntaxes/paragraph_syntax.dart';
+import 'block_syntaxes/setext_header_syntax.dart';
+import 'block_syntaxes/unordered_list_syntax.dart';
+import 'inline_syntaxes/autolink_syntax.dart';
+import 'inline_syntaxes/code_syntax.dart';
+import 'inline_syntaxes/decode_html_syntax.dart';
+import 'inline_syntaxes/delimiter_syntax.dart';
+import 'inline_syntaxes/email_autolink_syntax.dart';
+import 'inline_syntaxes/emphasis_syntax.dart';
+import 'inline_syntaxes/escape_html_syntax.dart';
+import 'inline_syntaxes/escape_syntax.dart';
+import 'inline_syntaxes/image_syntax.dart';
+import 'inline_syntaxes/inline_syntax.dart';
+import 'inline_syntaxes/line_break_syntax.dart';
+import 'inline_syntaxes/link_syntax.dart';
+import 'inline_syntaxes/soft_line_break_syntax.dart';
+import 'inline_syntaxes/text_syntax.dart';
+import 'custom_syntax/inline_center_syntax.dart';
+import 'custom_syntax/inline_spoiler_syntax.dart';
+import 'custom_syntax/image_with_size.dart';
+
 /// ExtensionSets provide a simple grouping mechanism for common Markdown
 /// flavors.
 ///
@@ -90,6 +120,39 @@ class ExtensionSet {
       ],
     ),
   );
+
+  static final ExtensionSet ALFlavored = ExtensionSet(
+    List<BlockSyntax>.unmodifiable(
+      <BlockSyntax>[
+        const EmptyBlockSyntax(),
+        const HtmlBlockSyntax(),
+        const SetextHeaderSyntax(),
+        const HeaderSyntax(),
+        const CodeBlockSyntax(),
+        const BlockquoteSyntax(),
+        const HorizontalRuleSyntax(),
+        const UnorderedListSyntax(),
+        const OrderedListSyntax(),
+        const LinkReferenceDefinitionSyntax(),
+        const ParagraphSyntax()
+      ],
+    ),
+    List<InlineSyntax>.unmodifiable(
+      <InlineSyntax>[
+        InlineSpoilerSyntax(),
+    EmailAutolinkSyntax(),
+    AutolinkSyntax(),
+    LineBreakSyntax(),
+    EmphasisSyntax.asterisk(),
+    EmphasisSyntax.underscore(),
+    CodeSyntax(),
+    SoftLineBreakSyntax(),
+    ImageWithSizeSyntax(),
+    InlineCenterSyntax(),
+      ],
+    ),
+  );
+
 
   final List<BlockSyntax> blockSyntaxes;
   final List<InlineSyntax> inlineSyntaxes;
